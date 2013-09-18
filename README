@@ -1,0 +1,35 @@
+LoL Data Create (c) Jakub 'Eremiell' Marek, 2013
+
+This program serves as a data generator for [LoL Rotation](https://github.com/Eremiell/LoLRotation).
+
+It generates a database of a kind, namely a csv file, with all data needed to compute optimal free character rotation for League of Legends.
+
+Most data were harvested form [Wikia](http://leagueoflegends.wikia.com/wiki/League_of_Legends_Wiki).
+
+Champion data, namely character's name, role, difficulty and week of release were harvested from [List of Champions](http://leagueoflegends.wikia.com/wiki/List_of_champions).
+
+Past rotations needed to calculate, when was a given champion last rotated in, were harvested from [Pre-Season One](http://leagueoflegends.wikia.com/wiki/Champion_Rotation_Schedule_%28Pre-Season_One%29) [Season One](http://leagueoflegends.wikia.com/wiki/Champion_Rotation_Schedule_%28Season_One%29) [Pre-Season Two](http://leagueoflegends.wikia.com/wiki/Champion_Rotation_Schedule_%28Pre-Season_Two%29) [Season Two](http://leagueoflegends.wikia.com/wiki/Champion_Rotation_Schedule_%28Season_Two%29) [Pre-Season Three](http://leagueoflegends.wikia.com/wiki/Champion_Rotation_Schedule_%28Pre-Season_Three%29) and [Season Three](http://leagueoflegends.wikia.com/wiki/Champion_Rotation_Schedule_%28Season_Three%29). Putting champion releases into weeks was done using same pages.
+
+Most of the data was harvested using various regexes and similar techniques, though some hand-writing was done as well and there may be errors not present in sources.
+
+All data besides the last rotation are now hardcoded into the program. This might change in future, but right now, it was faster for me.
+
+Last rotation data is done in persistent way and is easily expandable by future rotations without rewriting existing code.
+
+Rotations are calculated in chronological order and you can pick any moment since start of rotations to be generated.
+
+Usage:
+
+To invoke this usage guide, simply run the program with any of --help, -h, --usage, -u, -?, /? or \?.
+
+Simply run the program and it will make you a db.csv file to be used by [LoL Rotation](https://github.com/Eremiell/LoLRotation).
+
+You can use any positive whole number between 0 and total count of last rotation as an argument and it will generate you file for the given state. Future releases will get appropriate negative numbers and will get "released" at "proper time" when simulating multiple weeks in [LoL Rotation](https://github.com/Eremiell/LoLRotation).
+
+You can also write weeks as (P)S#W#, where first number is (pre-)season offset (currently between 1 and 3) and second number is week number in given (pre-)season, like S3W11 being eleventh week of third season and PS2W3 being third week of second pre-season. Week 0 will generate you the final state just before given (pre-)season and you can also use negative week numbers to go back in time so S3W0 generates last week of PS3 while PS2W-3 will get you three weeks deep beyond last state of S1.
+
+More about generating optimal champion rotations and simulating multiple weeks, as well as motivation and history of both of these tools at [LoL Rotation's README](https://github.com/Eremiell/LoLRotation/blob/master/README).
+
+This software has currently no license. It's been uploaded as a solution proposal, inspiration for dialogue possibly leading to even better solutions, work in progress and partly as showcase. Feel free to contact me about anything concerning it or, well, generally anything.
+
+Was tested with G++ and VSE2012 and should compile fine.
